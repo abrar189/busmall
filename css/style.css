@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+  }
+  h1 {
+    text-align: center;
+  }
+  img {
+    display: block;
+    width: 150px;
+    float: left;
+    height: 150px;
+    border: 2px solid lightblue;
+  }
+  #image-container {
+    padding-left: 200px;
+    border: 2px solid black;
+    width: 1000px;
+    margin: 0 auto;
+    height: 175px;
+  }
+  #leftImg,
+  #rightImg,
+  #middleImg {
+    width: 200px;
+    margin: 10px;
+    border-radius: 10px;
+  }
+  span {
+    margin-left: 50px;
+  }
+  #attempts {
+    margin-left: 20px;
+    font-size: 30px;
+  }
