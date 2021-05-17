@@ -8,6 +8,7 @@ let products = [];
 let productImagesNames = [];
 let productsClicks = [];
 let productsViews = [];
+let lastPhoto =[];
 let leftImgEl = document.getElementById('leftImg');
 let middelImgEl = document.getElementById('middleImg');
 let rightImgEl = document.getElementById('rightImg');
@@ -43,8 +44,10 @@ function render() {
   middelImage = randomImage();
   rightImage = randomImage();
 
-  while (leftImage === middelImage || leftImage === rightImage || rightImage === middelImage) {
+  while (leftImage === middelImage || leftImage === rightImage || rightImage === middelImage || lastPhoto.includes(leftImage)
+  || lastPhoto.includes(middelImage) || lastPhoto.includes(rightImage)) {
     leftImage = randomImage();
+    middelImage = randomImage();
   }
   leftImgEl.setAttribute('src', products[leftImage].path);
   leftImgEl.setAttribute('title', products[leftImage].path);
@@ -59,6 +62,9 @@ function render() {
   products[rightImage].views++;
 
   attemptsEL.textContent = attempts;
+  lastPhoto[0] = leftImage;
+  lastPhoto[1] = middelImage;
+  lastPhoto[2] = rightImage;
 
 }
 render();
@@ -102,11 +108,15 @@ function result() {
     liEl.textContent = `${products[i].productName} has ${products[i].views} views and has ${products[i].clicks} clicks.`;
     productsClicks.push(products[i].clicks);
     productsViews.push(products[i].views);
+    productImagesNames.push(products[i].productName);
   }
   leftImgEl.removeEventListener('click', handelClicks);
   middelImgEl.removeEventListener('click', handelClicks);
   rightImgEl.removeEventListener('click', handelClicks);
   chartRender();
+  console.log(productImagesNames);
+  console.log(productsClicks);
+  console.log(productsViews);
 }
 
 function chartRender() {
@@ -146,3 +156,8 @@ function chartRender() {
     }
   });
 }
+
+console.log(productImagesNames);
+console.log(productsClicks);
+console.log(productsViews);
+
