@@ -79,9 +79,6 @@ function handelClicks(event) {
     render();
 
 
-
-  } else {
-    //buttunEl.style.visibility ='visible';
   }
 
 
