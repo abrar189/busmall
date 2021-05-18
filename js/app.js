@@ -21,6 +21,41 @@ function ProductImg(productName) {
 
 }
 
+function settingProducts(){
+  let results = JSON.stringify(products);
+    localStorage.setItem('product',results);
+    let attemptsNum = JSON.stringify(attempts);
+    localStorage.setItem('attempt',attemptsNum);
+
+}
+function gettingProducts(){
+  let stringProduct = localStorage.getItem('product');
+  let normalProduct = JSON.parse(stringProduct);
+  let stringattempt = localStorage.getItem('attempt');
+  let normalattempt = JSON.parse(stringattempt);
+  
+  if (normalProduct !== null){
+      products = normalProduct;
+      
+  }
+  if (attempts >= maxAttempts){
+      localStorage.removeItem('product'); 
+      
+
+
+  } if(normalattempt >= maxAttempts ){
+      attempts =  0;  
+      localStorage.setItem('attempt',0);
+
+  }
+  if (attempts !== null){
+      attempts = normalattempt;
+      attemptsEL.textContent= attempts;
+
+  } 
+  console.log(attempts);
+}
+
 let productImages = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg',
   'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg',
   'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'water-can.jpg', 'wine-glass.jpg'];
@@ -88,6 +123,7 @@ function handelClicks(event) {
     {
       products[rightImage].clicks++;
     }
+    settingProducts();
     render();
 
   } else {
@@ -119,6 +155,7 @@ function handelClicks(event) {
     }
   }
 }
+
 function chartRender() {
   let ctx = document.getElementById('myChart').getContext('2d');
   let myChart = new Chart(ctx, {
@@ -157,3 +194,7 @@ function chartRender() {
   });
 }
 
+function settingItems (){
+  
+}
+gettingProducts();    
