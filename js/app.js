@@ -22,15 +22,15 @@ function ProductImg(productName) {
 }
 function settingItems() {
   let data = JSON.stringify(products);
-  localStorage.setItem('clicks and views',data);
+  localStorage.setItem('clicks and views', data);
 
 
 }
 
-function gettingItems(){
-  let stringEl =localStorage.getItem('clicks and views');
+function gettingItems() {
+  let stringEl = localStorage.getItem('clicks and views');
   let normalEl = JSON.parse(stringEl);
-  if (normalEl !== null){
+  if (normalEl !== null) {
     products = normalEl;
   }
 }
@@ -119,8 +119,8 @@ function handelClicks(event) {
 
 
 
+    // eslint-disable-next-line no-inner-declarations
     function result(event) {
-
       let liEl;
       for (let i = 0; i < products.length; i++) {
         liEl = document.createElement('li');
