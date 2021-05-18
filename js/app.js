@@ -20,40 +20,19 @@ function ProductImg(productName) {
   products.push(this);
 
 }
+function settingItems() {
+  let data = JSON.stringify(products);
+  localStorage.setItem('clicks and views',data);
 
-function settingProducts(){
-  let results = JSON.stringify(products);
-    localStorage.setItem('product',results);
-    let attemptsNum = JSON.stringify(attempts);
-    localStorage.setItem('attempt',attemptsNum);
 
 }
-function gettingProducts(){
-  let stringProduct = localStorage.getItem('product');
-  let normalProduct = JSON.parse(stringProduct);
-  let stringattempt = localStorage.getItem('attempt');
-  let normalattempt = JSON.parse(stringattempt);
-  
-  if (normalProduct !== null){
-      products = normalProduct;
-      
+
+function gettingItems(){
+  let stringEl =localStorage.getItem('clicks and views');
+  let normalEl = JSON.parse(stringEl);
+  if (normalEl !== null){
+    products = normalEl;
   }
-  if (attempts >= maxAttempts){
-      localStorage.removeItem('product'); 
-      
-
-
-  } if(normalattempt >= maxAttempts ){
-      attempts =  0;  
-      localStorage.setItem('attempt',0);
-
-  }
-  if (attempts !== null){
-      attempts = normalattempt;
-      attemptsEL.textContent= attempts;
-
-  } 
-  console.log(attempts);
 }
 
 let productImages = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg',
@@ -73,6 +52,8 @@ function randomImage() {
 let leftImage;
 let middelImage;
 let rightImage;
+
+
 
 function render() {
   leftImage = randomImage();
@@ -119,11 +100,11 @@ function handelClicks(event) {
 
     } else if (event.target.id === 'middleImg') {
       products[middelImage].clicks++;
-    } else (event.target.id === 'rightImg')
+    } else (event.target.id === 'rightImg');
     {
       products[rightImage].clicks++;
     }
-    settingProducts();
+    settingItems();
     render();
 
   } else {
@@ -194,7 +175,5 @@ function chartRender() {
   });
 }
 
-function settingItems (){
-  
-}
-gettingProducts();    
+
+gettingItems();
