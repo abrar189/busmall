@@ -48,6 +48,7 @@ function render() {
   || lastPhoto.includes(middelImage) || lastPhoto.includes(rightImage)) {
     leftImage = randomImage();
     middelImage = randomImage();
+    rightImage = randomImage();
   }
   leftImgEl.setAttribute('src', products[leftImage].path);
   leftImgEl.setAttribute('title', products[leftImage].path);
@@ -73,6 +74,8 @@ leftImgEl.addEventListener('click', handelClicks);
 middelImgEl.addEventListener('click', handelClicks);
 rightImgEl.addEventListener('click', handelClicks);
 let buttunEl = document.getElementById('button1');
+
+
 //buttunEl.addEventListener('click',handelClicks);
 function handelClicks(event) {
   attempts++;
@@ -88,14 +91,21 @@ function handelClicks(event) {
     render();
 
 
-
-  } else {
-    //buttunEl.style.visibility ='visible';
+  } else if (attempts > 25){
+   
+   
+    //buttunEl.style.display = "block";
+     
   }
-
-
+   
 
 }
+   
+   
+
+
+
+
 let ulEl = document.getElementById('results');
 
 
@@ -110,10 +120,15 @@ function result() {
     productsViews.push(products[i].views);
     productImagesNames.push(products[i].productName);
   }
+  
   leftImgEl.removeEventListener('click', handelClicks);
-  middelImgEl.removeEventListener('click', handelClicks);
-  rightImgEl.removeEventListener('click', handelClicks);
-  chartRender();
+    middelImgEl.removeEventListener('click', handelClicks);
+    rightImgEl.removeEventListener('click', handelClicks);
+  
+   chartRender();
+  
+  
+ 
   console.log(productImagesNames);
   console.log(productsClicks);
   console.log(productsViews);
