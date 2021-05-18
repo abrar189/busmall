@@ -8,7 +8,7 @@ let products = [];
 let productImagesNames = [];
 let productsClicks = [];
 let productsViews = [];
-let lastPhoto =[];
+let lastPhoto = [];
 let leftImgEl = document.getElementById('leftImg');
 let middelImgEl = document.getElementById('middleImg');
 let rightImgEl = document.getElementById('rightImg');
@@ -45,7 +45,7 @@ function render() {
   rightImage = randomImage();
 
   while (leftImage === middelImage || leftImage === rightImage || rightImage === middelImage || lastPhoto.includes(leftImage)
-  || lastPhoto.includes(middelImage) || lastPhoto.includes(rightImage)) {
+    || lastPhoto.includes(middelImage) || lastPhoto.includes(rightImage)) {
     leftImage = randomImage();
     middelImage = randomImage();
     rightImage = randomImage();
@@ -73,10 +73,9 @@ render();
 leftImgEl.addEventListener('click', handelClicks);
 middelImgEl.addEventListener('click', handelClicks);
 rightImgEl.addEventListener('click', handelClicks);
-let buttunEl = document.getElementById('button1');
-
-
-//buttunEl.addEventListener('click',handelClicks);
+let result1 = document.getElementById('results-containar');
+let button1 = document.createElement('botton');
+let ulEl = document.getElementById('results');
 function handelClicks(event) {
   attempts++;
   if (attempts <= maxAttempts) {
@@ -85,55 +84,41 @@ function handelClicks(event) {
 
     } else if (event.target.id === 'middleImg') {
       products[middelImage].clicks++;
-    } else if (event.target.id === 'rightImg') {
+    } else (event.target.id === 'rightImg')
+    {
       products[rightImage].clicks++;
     }
     render();
 
-
-  } else if (attempts > 25){
-   
-   
-    //buttunEl.style.display = "block";
-     
-  }
-   
-
-}
-   
-   
-
-
-
-
-let ulEl = document.getElementById('results');
-
-
-function result() {
-
-  let liEl;
-  for (let i = 0; i < products.length; i++) {
-    liEl = document.createElement('li');
-    ulEl.appendChild(liEl);
-    liEl.textContent = `${products[i].productName} has ${products[i].views} views and has ${products[i].clicks} clicks.`;
-    productsClicks.push(products[i].clicks);
-    productsViews.push(products[i].views);
-    productImagesNames.push(products[i].productName);
-  }
-  
-  leftImgEl.removeEventListener('click', handelClicks);
+  } else {
+    leftImgEl.removeEventListener('click', handelClicks);
     middelImgEl.removeEventListener('click', handelClicks);
     rightImgEl.removeEventListener('click', handelClicks);
-  
-   chartRender();
-  
-  
- 
-  console.log(productImagesNames);
-  console.log(productsClicks);
-  console.log(productsViews);
-}
 
+
+    result1.appendChild(button1);
+    button1.textContent = 'click hear';
+    button1.addEventListener('click', result);
+
+
+
+    function result(event) {
+
+      let liEl;
+      for (let i = 0; i < products.length; i++) {
+        liEl = document.createElement('li');
+        ulEl.appendChild(liEl);
+        liEl.textContent = `${products[i].productName} has ${products[i].views} views and has ${products[i].clicks} clicks.`;
+        productsClicks.push(products[i].clicks);
+        productsViews.push(products[i].views);
+        productImagesNames.push(products[i].productName);
+      }
+
+      //button1.removeEventListener('click', result);
+      chartRender();
+    }
+  }
+}
 function chartRender() {
   let ctx = document.getElementById('myChart').getContext('2d');
   let myChart = new Chart(ctx, {
@@ -171,8 +156,4 @@ function chartRender() {
     }
   });
 }
-
-console.log(productImagesNames);
-console.log(productsClicks);
-console.log(productsViews);
 
