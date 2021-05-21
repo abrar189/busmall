@@ -1,32 +1,38 @@
 * {
     box-sizing: border-box;
   }
+  body{
+    background-color: lightblue;
+  }
   h1 {
     text-align: center;
+    font-family: cursive;
+    font-size: 30px;
   }
   img {
     display: block;
     width: 150px;
     float: left;
     height: 150px;
-    border: 2px solid lightblue;
+    border: 10px solid rgb(5, 5, 5);
   }
   #image-container {
-    padding-left: 200px;
-    border: 2px solid black;
+    padding-left: 155px;
     width: 1000px;
     margin: 0 auto;
     height: 175px;
+
   }
   #leftImg,
   #rightImg,
   #middleImg {
     width: 200px;
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 50px;
   }
   span {
     margin-left: 50px;
+    font-family: cursive;
   }
   #attempts {
     margin-left: 20px;
@@ -34,12 +40,24 @@
   }
 
   botton{
-    background-color: purple ;
-    border: none;
+    background-color: rgb(148, 63, 148) ;
+    border: 2px solid black;
     color: white;
     padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-     font-size: 16px;
+    font-size: 16px;
+    font-family: cursive;
+    
+    
   }
+
+  #par{
+    font-family: cursive;
+    font-size: 20px;
+    padding-top: 50px;
+    padding-left: 10px;
+  }
+  #results{
+    text-align: center;
+font-family: cursive;
+
+}
